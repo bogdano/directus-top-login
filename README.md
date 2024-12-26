@@ -1,4 +1,4 @@
-# directus-top-login
+# directus-otp-login
 An endpoint extension that takes in a user id and an OTP (input by the user) from a POST request and returns an access token and refresh token, like /auth/login.
 
 `directus_users` needs **3 additional fields** for this extension: `otp` for storing a randomly generated One-Time-Passkey, `otp_expires` which is a datetime field set to now + 10 minutes on OTP generation, and `otp_attempts` to prevent more than 3 attemtps at verifying a generated key at a time, in a simple way. 
