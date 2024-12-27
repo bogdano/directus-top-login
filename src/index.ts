@@ -119,12 +119,9 @@ export default defineEndpoint((router, { env, database, logger }) => {
             }
 
             return res.json({
-                data: {
-                    access_token: accessToken,
-                    refresh_token: refreshToken,
-                    expires: getMilliseconds(TTL),
-                    id: user.id,
-                }
+                access_token: accessToken,
+                refresh_token: refreshToken,
+                expires: getMilliseconds(TTL),
             });
 
         } catch (error) {
