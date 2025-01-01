@@ -104,8 +104,6 @@ export default defineEndpoint((router, { env, database, logger }) => {
                     otp: null,
                     otp_expires: null,
                     otp_attempts: 0,
-                    // In my usecase, OTP verification counts for account verification
-                    status: 'active',
                 });
 
             // Set cookies if in session mode
