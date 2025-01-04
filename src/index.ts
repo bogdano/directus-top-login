@@ -108,11 +108,12 @@ export default defineEndpoint((router, { env, database, logger }) => {
 
             // Set cookies if in session mode
             if (req.body.session) {
-                res.cookie('directus_refresh_token', refreshToken, {
-                    httpOnly: true,
-                    secure: env['NODE_ENV'] === 'production',
-                    sameSite: 'strict',
-                    expires: refreshTokenExpiration,
+                res.cookie('directus_session_token', refreshToken, {
+                  httpOnly: true,
+                 	domain: env['SESSION_COOKIE_DOMAIN'] as string,
+                 	maxAge: getMilliseconds(env['SESSION_COOKIE_TTL'] as string),
+                 	secure: Boolean(env['SESSION_COOKIE_SECURE']),
+                 	sameSite: (env['SESSION_COOKIE_SAME_SITE'] || 'strict') as 'lax' | 'strict' | 'none',
                 });
             }
 
